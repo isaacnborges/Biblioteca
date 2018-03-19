@@ -1,0 +1,37 @@
+﻿<form action="/Livro/Atualiza" method="post">
+
+    <label for="id">Id:</label>
+    <input id="id" name="livro.Id" value="@ViewBag.Livro.Id" class="form-control" readonly />
+
+    <label for="nome">Nome:</label>
+    <input id="nome" name="livro.Nome" value="@ViewBag.Livro.Nome" class="form-control" />
+    @Html.ValidationMessage("livro.Nome")
+
+    <label for="preco">Preco:</label>
+    <input id="preco" name="livro.Preco" value="@ViewBag.Livro.Preco" class="form-control" />
+
+    <label for="quantidade">Quantidade:</label>
+    <input id="quantidade" name="livro.Quantidade" value="@ViewBag.Livro.Quantidade" class="form-control" />
+
+    <label for="genero">Genero:</label>
+    <select id="genero" name="livro.GeneroId" class="form-control">
+        @foreach (var genero in ViewBag.Generos)
+        {
+            <option value="@genero.Id" selected="@genero.Id.Equals(ViewBag.Livro.GeneroId)">
+                @genero.Descricao
+            </option>
+        }
+    </select>
+
+    <input type="submit" value="Atualizar" />
+
+    <ul class="nav nav-pills pull-right">
+        <li>@Html.ActionLink("Voltar", "Index", "Livro")</li>
+    </ul>
+</form>
+
+@using (Html.BeginForm("Exclui", "Livro", FormMethod.Post))
+{
+    <label hidden="true">@Html.TextBox("id")</label>
+    <input type="submit" value="Excluir" />
+}

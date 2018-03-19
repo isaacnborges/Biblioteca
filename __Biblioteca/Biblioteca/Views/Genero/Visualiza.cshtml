@@ -1,0 +1,21 @@
+﻿<form action="/Genero/Atualiza" method="post">
+
+    <label for="id">Id:</label>
+    <input id="id" name="genero.Id" value="@ViewBag.Genero.Id" class="form-control" readonly />
+
+    <label for="descricao">Descrição:</label>
+    <input id="descricao" name="genero.Descricao" value="@ViewBag.Genero.Descricao" class="form-control" />
+
+
+    <input type="submit" value="Atualizar" />
+
+    <ul class="nav nav-pills pull-right">
+        <li>@Html.ActionLink("Voltar", "Index", "Genero")</li>
+    </ul>
+</form>
+
+@using (Html.BeginForm("Exclui", "Genero", FormMethod.Post))
+{
+    <label hidden="true">@Html.TextBox("id")</label>
+    <input type="submit" value="Excluir" />
+}

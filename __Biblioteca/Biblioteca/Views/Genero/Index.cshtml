@@ -1,0 +1,26 @@
+﻿@model IList<Biblioteca.Models.Genero>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Descricao</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var genero in Model.OrderBy(t => t.Descricao))
+        {
+            <tr>
+                <td>@genero.Id</td>
+                <td>
+                    @Html.RouteLink(genero.Descricao, "VisualizaGenero", new { id = genero.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<ul class="nav nav-pills pull-left">
+    <li>@Html.ActionLink("Novo", "Form", "Genero")</li>
+</ul>

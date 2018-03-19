@@ -1,0 +1,24 @@
+﻿<form action="/Livro/Adiciona" method="post">
+
+    <label for="nome">Nome:</label>
+    <input id="nome" name="livro.Nome" value="@ViewBag.Livro.Nome" class="form-control" />
+    @Html.ValidationMessage("livro.Nome")
+
+    <label for="preco">Preco:</label>
+    <input id="preco" name="livro.Preco" value="@ViewBag.Livro.Preco" class="form-control" />
+
+    <label for="quantidade">Quantidade:</label>
+    <input id="quantidade" name="livro.Quantidade" value="@ViewBag.Livro.Quantidade" class="form-control" />
+
+    <label for="genero">Gategoria:</label>
+    <select id="genero" name="livro.GeneroId" class="form-control">
+        @foreach (var genero in ViewBag.Generos)
+        {
+            <option value="@genero.Id" selected="@genero.Id.Equals(ViewBag.Livro.GeneroId)">
+                @genero.Descricao
+            </option>
+        }
+    </select>
+
+    <input type="submit" value="Cadastrar" />
+</form>
